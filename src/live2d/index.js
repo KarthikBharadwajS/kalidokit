@@ -1,4 +1,7 @@
 import { modelsList } from "./utils/constants.js";
+
+// Disable pixi fail on major performance caveat setting, so that it can run in lower level browsers
+PIXI.settings.FAIL_IF_MAJOR_PERFORMANCE_CAVEAT = false;
 const {
     Application,
     live2d: { Live2DModel },
