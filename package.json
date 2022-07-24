@@ -1,12 +1,13 @@
 {
   "name": "kalidokit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Kalidokit and cubism sdk testing area",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "vite src",
-    "build": "npm run build:3d && npm run build:live2d",
+    "build": "npm run build:3d && npm run build:live2d && build:static",
+    "build:static": "rm -rf public/assets && cp -r src/assets public/ && cp src/index.html public/index.html && cp src/style.css public/style.css && cp src/live2d/index.html public/live2d/index.html && cp src/live2d/style.css public/live2d/style.css && cp src/3d/index.html public/3d/index.html && cp src/3d/style.css public/3d/style.css",
     "build:3d": "uglifyjs src/3d/index.js -o public/3d/index.min.js --compress --mangle",
     "build:live2d": "uglifyjs src/live2d/index.js -o public/live2d/index.min.js --compress --mangle && uglifyjs src/live2d/utils/constants.js -o public/live2d/utils/constants.js"
   },

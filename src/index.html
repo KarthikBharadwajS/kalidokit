@@ -6,23 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/6.0.0/introjs.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/6.0.0/intro.min.js" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="/assets/css/introjs-dark.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body style="width: 100%;height: 100%;" class="bg-3">
     <h1 style="text-align: center; margin: 20px auto;"> Live2D cubism + KalidoKit body and face tracking</h1>
-    <div class="box bg-3" style="width: 100%; height: 100%;">
-        <a href="/live2d/">
+    <div class="box bg-3" style="width: 100%; height: 25%;">
+        <a href="/live2d/" id="live2d">
             <button class="button button--winona button--border-thin button--text-thick button--inverted">
                 <p style="color: white;">Live2D Cubism SDK</p>
             </button>
         </a>
-        <a class="current" href="/3d/">
+        <a class="current" href="/3d/" id="live3d">
             <button class="button button--winona button--border-thin button--text-thick button--inverted">
                 <p style="color: white;">3D VRM</p>
             </button>
         </a>
     </div>
+    <script>
+        introJs().setOptions({
+            dontShowAgain: true,
+            steps: [
+                {
+                    title: "WELCOME :)",
+                    intro: "This demo application will showcase the model tracking with just a webcam"
+                },
+                {
+                    element: document.getElementById('live2d'),
+                    intro: "This demo tracks head, eyes, mouth movement and translates to the 2D Avatar",
+                    position: 'left'
+                },
+                {
+                    element: document.getElementById('live3d'),
+                    intro: 'This demo tracks full body, hands movement and translates to the 3D Avatar',
+                    position: 'right'
+                }
+            ]
+        }).start();
+    </script>
 </body>
 
 </html>
