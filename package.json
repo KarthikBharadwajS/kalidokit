@@ -1,0 +1,25 @@
+{
+  "name": "kalidokit",
+  "version": "0.0.1",
+  "description": "Kalidokit and cubism sdk testing area",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:3d && npm run build:live2d",
+    "build:3d": "uglifyjs src/3d/index.js -o public/3d/index.min.js --compress --mangle",
+    "build:live2d": "uglifyjs src/live2d/index.js -o public/live2d/index.min.js --compress --mangle && uglifyjs src/live2d/utils/constants.js -o public/live2d/utils/constants.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarthikBharadwajS/kalidokit.git"
+  },
+  "keywords": [
+    "vrm"
+  ],
+  "author": "KarthikBharadwajS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KarthikBharadwajS/kalidokit/issues"
+  },
+  "homepage": "https://github.com/KarthikBharadwajS/kalidokit#readme"
+}
