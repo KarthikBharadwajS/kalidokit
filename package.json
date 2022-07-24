@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "vite src",
     "build": "npm run build:3d && npm run build:live2d",
     "build:3d": "uglifyjs src/3d/index.js -o public/3d/index.min.js --compress --mangle",
     "build:live2d": "uglifyjs src/live2d/index.js -o public/live2d/index.min.js --compress --mangle && uglifyjs src/live2d/utils/constants.js -o public/live2d/utils/constants.js"
@@ -12,6 +13,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/KarthikBharadwajS/kalidokit.git"
+  },
+  "devDependencies": {
+    "vite": "^3.0.2"
   },
   "keywords": [
     "vrm"
