@@ -16,6 +16,16 @@ h1 {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+.settings {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #222;
+}
 h1:hover {
     color: #13a3f3;
 }
