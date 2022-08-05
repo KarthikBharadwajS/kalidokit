@@ -1,6 +1,8 @@
 // Import
 import { get2DModel } from "../../utils/model-handler";
 
+export let app = null;
+
 // Disable pixi fail on major performance caveat setting, so that it can run in lower level browsers
 PIXI.settings.FAIL_IF_MAJOR_PERFORMANCE_CAVEAT = false;
 const {
@@ -18,8 +20,7 @@ const {
 } = Kalidokit;
 
 // Url to Live2D
-let modelUrl = get2DModel().path;
-let currentModel, facemesh;
+export let currentModel, facemesh;
 
 const videoElement = document.querySelector(".input_video"),
     guideCanvas = document.querySelector("canvas.guides");
@@ -30,41 +31,47 @@ export function rerender() {
     videoElement.innerHTML = "";
     guideCanvas.innerHTML = "";
     canvas.style.display = "none";
-    modelUrl = get2DModel().path;
-    main();
+    const { path, scale, anchor } = get2DModel();
+    main(path, scale, anchor);
 }
 
-export async function main() {
+export async function main(modelUrl, modelScale, modelAnchor) {
     // create pixi application
-    const app = new PIXI.Application({
+    const _app = new PIXI.Application({
         view: document.getElementById("live2d"),
         autoStart: true,
         backgroundAlpha: 0,
-        backgroundColor: 0xffffff,
+        backgroundColor: 0x525252,
         resizeTo: window,
     });
 
+    app = _app;
+
     // load live2d model
     currentModel = await Live2DModel.from(modelUrl, { autoInteract: false });
-    currentModel.scale.set(0.4);
+    currentModel.scale.set(modelScale);
     currentModel.interactive = true;
-    currentModel.anchor.set(0.5, 0.5);
+    currentModel.anchor.set(modelAnchor.x, modelAnchor.y);
     currentModel.position.set(window.innerWidth * 0.5, window.innerHeight * 0.8);
 
     // Add events to drag model
-    // currentModel.on("pointerdown", (e) => {
-    //     currentModel.offsetX = e.data.global.x - currentModel.position.x;
-    //     currentModel.offsetY = e.data.global.y - currentModel.position.y;
-    //     currentModel.dragging = true;
-    // });
-    // currentModel.on("pointerup", (e) => {
-    //     currentModel.dragging = false;
-    // });
-    // currentModel.on("pointermove", (e) => {
-    //     if (currentModel.dragging) {
-    //         currentModel.position.set(e.data.global.x - currentModel.offsetX, e.data.global.y - currentModel.offsetY);
-    //     }
-    // });
+    currentModel.on("pointerdown", (e) => {
+        document.getElementById("live2d").style.cursor = "grabbing";
+        currentModel.offsetX = e.data.global.x - currentModel.position.x;
+        currentModel.offsetY = e.data.global.y - currentModel.position.y;
+        currentModel.dragging = true;
+    });
+    
+    currentModel.on("pointerup", (e) => {
+        document.getElementById("live2d").style.cursor = "default";
+        currentModel.dragging = false;
+    });
+
+    currentModel.on("pointermove", (e) => {
+        if (currentModel.dragging) {
+            currentModel.position.set(e.data.global.x - currentModel.offsetX, e.data.global.y - currentModel.offsetY);
+        }
+    });
 
     // Add mousewheel events to scale model
     document.querySelector("#live2d").addEventListener("wheel", (e) => {

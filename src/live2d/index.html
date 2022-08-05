@@ -28,20 +28,37 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/6.0.0/intro.min.js" crossorigin="anonymous"
     referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://kalidokitdemo.web.app/assets/css/introjs-dark.css">
   <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-  <div class="settings" id="settings-2d" style="background-color: transparent;">
-    <i class="fa fa-gear" style="font-size:40px; color: cadetblue"></i>
+  <div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0;" id="rightMenu">
+    <button id="settingsClose" class="w3-bar-item w3-button w3-large">Close &times;</button>
+    <a id="background-selector" class="w3-bar-item w3-button right-modal"
+      data-action="background-selector">Background</a>
+    <a id="change-model" class="w3-bar-item w3-button right-modal" data-action="change-model">Change character</a>
+    <a id="change-model-expressions" class="w3-bar-item w3-button right-modal"
+      data-action="change-model-expressions">Expressions</a>
+    <a id="effects" class="w3-bar-item w3-button right-modal" data-action="effects">Effects</a>
   </div>
-  <div class="preview" id="preview">
-    <video class="input_video" width="1280px" height="720px"></video>
-    <canvas class="guides" id="guides"></canvas>
+  <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="leftMenu">
+    <button id="leftBarClose" class="w3-bar-item w3-button w3-large">Close &times;</button>
+    <input type="color" id="background-color-pickcer" name="background-color-pickcer" value="#525252"
+      style="display: none; width: 80%; margin-right: auto; margin-left: auto;">
   </div>
-  <canvas id="live2d" style="display: none;"></canvas>
+  <div id="body">
+    <div class="settings" id="settings-2d" style="background-color: transparent;">
+      <i class="fa fa-gear" style="font-size:40px; color: rgb(252, 252, 252)"></i>
+    </div>
+    <div class="preview" id="preview">
+      <video class="input_video" width="1280px" height="720px"></video>
+      <canvas class="guides" id="guides"></canvas>
+    </div>
+    <canvas id="live2d" style="display: none;"></canvas>
+  </div>
   <script type="module" src="./index.js"></script>
   <script>
     setTimeout(function () {
