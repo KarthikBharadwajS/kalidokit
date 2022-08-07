@@ -3,6 +3,7 @@
     font-display: block;
     src: url("https://yeemachine.github.io/kalidoface-live2d-models/Font/kalidoface-jelly.ttf") format("truetype");
 }
+
 h1 {
     font-family: "Jelly";
     font-size: 32px;
@@ -16,9 +17,11 @@ h1 {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 h1:hover {
     color: #13a3f3;
 }
+
 a,
 a:visited,
 a:link {
@@ -26,12 +29,14 @@ a:link {
     color: #222;
     display: inline-block;
 }
+
 a:hover,
 a:visited:hover,
 a:link:hover {
     color: #13a3f3;
     cursor: pointer;
 }
+
 .preview {
     display: flex;
     flex-direction: column;
@@ -42,6 +47,7 @@ a:link:hover {
     border-radius: 8px;
     background: #222;
 }
+
 .settings {
     display: flex;
     flex-direction: column;
@@ -52,20 +58,25 @@ a:link:hover {
     border-radius: 8px;
     background: #222;
 }
+
 video {
     max-width: 400px;
     height: auto;
     transform: scale(-1, 1);
 }
+
 .preview canvas {
     transform: scale(-1, 1);
 }
+
 body {
     margin: 0;
 }
+
 canvas {
     display: block;
 }
+
 .guides {
     position: absolute;
     bottom: 0;
@@ -74,17 +85,20 @@ canvas {
     width: 100%;
     z-index: 1;
 }
+
 nav {
     position: absolute;
     top: 12px;
     right: 16px;
     display: flex;
 }
+
 nav img {
     width: 36px;
     height: auto;
     margin-left: 22px;
 }
+
 section {
     position: absolute;
     bottom: 0;
@@ -99,6 +113,7 @@ section {
     z-index: 2;
     /* border-radius: 40px; */
 }
+
 p {
     color: white;
     padding: 8px 16px;
@@ -106,13 +121,16 @@ p {
         sans-serif;
     margin: 0;
 }
+
 .preview a {
     border-radius: 24px;
     margin: 0 4px;
 }
+
 .preview a:hover {
     background: #ffffff20;
 }
+
 a.current {
     background: #13a3f3;
     pointer-events: none;
@@ -132,3 +150,49 @@ a.current {
         max-width: 160px;
     }
 }
+
+.progress-container {
+    box-shadow: 0 4px 5px rgb(0, 0, 0, 0.1)
+  }
+  
+  .progress-container, .progress {
+    background-color: #eee;
+    border-radius: 5px;
+    position: relative;
+    height: 7px;
+    width: 300px;
+  }
+  
+  .progress {
+    background-color: #6F39B0;
+    width: 0;
+    transition: width 0.4s linear;
+  }
+  
+  .percentage {
+    background-color: #6F39B0;
+    border-radius: 5px;
+    box-shadow: 0 4px 5px rgb(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 12px;
+    padding: 4px;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    transform: translateX(-50%);
+    width: 40px;
+    text-align: center;
+    transition: left 0.4s linear;
+  }
+  
+  .percentage::after {
+    background-color: #6F39B0;
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    height: 10px;
+    width: 10px;
+    z-index: -1;
+  }
