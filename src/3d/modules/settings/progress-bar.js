@@ -4,13 +4,13 @@ const progressContainer = document.getElementById('progress-container');
 setPercentage();
 
 export function setPercentage(per) {
-  const percentage = per ? per : progressContainer.getAttribute('data-percentage') + '%';
+  const percentage = per ? per + '%' : progressContainer.getAttribute('data-percentage') + '%';
 
   if (per) {
     progressContainer.setAttribute("data-percentage", per);
   }
-  const progressEl = document.getElementById('progress-bar');
-  const percentageEl = document.getElementById('percentage-bar');
+  const progressEl = progressContainer.querySelector('.progress');
+  const percentageEl = progressContainer.querySelector('.percentage');
 
   progressEl.style.width = percentage;
   percentageEl.innerText = percentage;
