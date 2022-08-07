@@ -1,6 +1,6 @@
 // Import
 import { get3dModel, set3dModel, setBackground } from "../../utils/model-handler";
-import { renderer } from "../world";
+import { renderer, light } from "../world";
 
 let leftBarActions = null;
 
@@ -18,12 +18,31 @@ document.getElementById("settingsClose").addEventListener('click', closeRightMen
 
 document.getElementById("leftBarClose").addEventListener('click', closeLeftMenu);
 
-document.getElementById("background-color-pickcer").addEventListener("change", colorPickcer);
+document.getElementById("background-color-pickcer").addEventListener("change", backgroundColorPickcer);
 
-function colorPickcer(e) {
+document.getElementById("light-color-picker").addEventListener("change", lightColorPicker);
+
+document.getElementById("light-intensity-picker").addEventListener("change", lightIntensityInput);
+
+document.getElementById("light-cast-shadow").addEventListener("change", castShadowHandler);
+
+function castShadowHandler(e) {
+    light.castShadow = e.target.checked;
+}
+
+function backgroundColorPickcer(e) {
     const hex = String(e.target.value);
     setBackground(hex);
     renderer.setClearColor(hex, 1);
+}
+
+function lightColorPicker(e) {
+    const hex = String(e.target.value);
+    light.color = new THREE.Color(hex);
+}
+
+function lightIntensityInput(e) {
+    light.intensity = e.target.value / 10;
 }
 
 function changeModels() {
@@ -39,8 +58,13 @@ function handlerLeftSideBar(e) {
     const action = e.target.getAttribute('data-action');
     switch (action) {
         case "background-selector":
-            leftBarActions = document.getElementById("background-color-pickcer");
-            leftBarActions.style.display = "block";
+            leftBarActions = document.getElementsByClassName("scene-params");
+            for (var i = 0; i < leftBarActions.length; i++) {
+                if (leftBarActions[i].classList.contains("inline-box"))
+                    leftBarActions[i].style.display = "inline-block";
+                else
+                    leftBarActions[i].style.display = "block";
+            }
             break;
         case "change-model":
             changeModels();
@@ -61,7 +85,9 @@ function openLeftMenu(e) {
 
 function closeLeftMenu() {
     if (leftBarActions) {
-        leftBarActions.style.display = "none";
+        for (var i = 0; i < leftBarActions.length; i++) {
+            leftBarActions[i].style.display = "none";
+        }
     }
     document.getElementById("leftMenu").style.display = "none";
 }
