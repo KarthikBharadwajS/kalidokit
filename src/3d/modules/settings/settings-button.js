@@ -1,6 +1,6 @@
 // Import
-import { get3dModel, set3dModel } from "../../utils/model-handler";
-import { loadModel, renderer } from "../world";
+import { get3dModel, set3dModel, setBackground } from "../../utils/model-handler";
+import { renderer } from "../world";
 
 let leftBarActions = null;
 
@@ -22,6 +22,7 @@ document.getElementById("background-color-pickcer").addEventListener("change", c
 
 function colorPickcer(e) {
     const hex = String(e.target.value);
+    setBackground(hex);
     renderer.setClearColor(hex, 1);
 }
 

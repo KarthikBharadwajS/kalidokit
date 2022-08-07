@@ -44,3 +44,26 @@ export const set2DModel = (modelArrValue) => {
     }
 };
 
+// Setter Background 3d
+export function setBackground(val) {
+    if (localStorage) {
+        document.getElementById("background-color-pickcer").value = val.replace("0x","#");
+        localStorage.setItem("selBackValue2d", val);
+    }
+}
+
+// Getter Background 3d
+export function getBackground() {
+    if (localStorage) {
+        const background = localStorage.getItem("selBackValue2d");
+        if (typeof background === "string") {
+            document.getElementById("background-color-pickcer").value = background.replace("0x","#");
+            return background;
+        } else {
+            localStorage.setItem("selBackValue2d", "0x525252");
+            return "0x525252";
+        }
+    } else {
+        return "0x525252";
+    }
+}
