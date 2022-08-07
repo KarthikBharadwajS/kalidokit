@@ -153,23 +153,24 @@ a.current {
 
 .progress-container {
     box-shadow: 0 4px 5px rgb(0, 0, 0, 0.1)
-  }
-  
-  .progress-container, .progress {
+}
+
+.progress-container,
+.progress {
     background-color: #eee;
     border-radius: 5px;
     position: relative;
     height: 7px;
     width: 300px;
-  }
-  
-  .progress {
+}
+
+.progress {
     background-color: #6F39B0;
     width: 0;
     transition: width 0.4s linear;
-  }
-  
-  .percentage {
+}
+
+.percentage {
     background-color: #6F39B0;
     border-radius: 5px;
     box-shadow: 0 4px 5px rgb(0, 0, 0, 0.2);
@@ -183,9 +184,9 @@ a.current {
     width: 40px;
     text-align: center;
     transition: left 0.4s linear;
-  }
-  
-  .percentage::after {
+}
+
+.percentage::after {
     background-color: #6F39B0;
     content: '';
     position: absolute;
@@ -195,4 +196,4 @@ a.current {
     height: 10px;
     width: 10px;
     z-index: -1;
-  }
+}
