@@ -62,11 +62,12 @@ export const loadModel = (modelUrl) => {
 
         (progress) => {
             const percentage = Math.ceil(100.0 * (progress.loaded / progress.total));
-            console.log("Loading model...", percentage, "%");
-            enableProgressBar();
-            setPercentage(percentage);
-            if (percentage == 100) {
-                disableProgressBar();
+            if (percentage !== Infinity) {
+                enableProgressBar();
+                setPercentage(percentage);
+                if (percentage == 100) {
+                    disableProgressBar();
+                }
             }
         },
 

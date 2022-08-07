@@ -21,7 +21,6 @@ document.getElementById("leftBarClose").addEventListener('click', closeLeftMenu)
 document.getElementById("background-color-pickcer").addEventListener("change", colorPickcer);
 
 function colorPickcer(e) {
-    console.log(e.target.value);
     const hex = String(e.target.value);
     renderer.setClearColor(hex, 1);
 }
