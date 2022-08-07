@@ -5,19 +5,22 @@ setPercentage();
 
 export function setPercentage(per) {
   const percentage = per ? per : progressContainer.getAttribute('data-percentage') + '%';
-  
+
+  if (per) {
+    progressContainer.setAttribute("data-percentage", per);
+  }
   const progressEl = document.getElementById('progress-bar');
   const percentageEl = document.getElementById('percentage-bar');
-  
+
   progressEl.style.width = percentage;
   percentageEl.innerText = percentage;
   percentageEl.style.left = percentage;
 };
 
 export function enableProgressBar() {
-    progressContainer.style.display = "block";
+  progressContainer.style.display = "block";
 }
 
 export function disableProgressBar() {
-    progressContainer.style.display = "none";
+  progressContainer.style.display = "none";
 }
