@@ -7,8 +7,6 @@
   <title>KalidoKit - Face and Body Rig Solver</title>
   <meta name="description" content="Track face and body rigs just your browser webcam!" />
   <base href="/3d/">
-  <meta name="twitter:description" content="Track face and body rigs just your browser webcam!" />
-  <link rel="shortcut icon" href="https://yeemachine.github.io/kalidoface-live2d-models/Icons/icon-circle.svg" />
   <!--     Basic Three.js -->
   <script src="https://unpkg.com/three@0.133.0/build/three.js"></script>
   <!--     GLTF Loader for Three.js -->
@@ -29,18 +27,39 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/6.0.0/intro.min.js" crossorigin="anonymous"
     referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://kalidokitdemo.web.app/assets/css/introjs-dark.css">
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <div class="settings">
-    <i class="fa fa-gear" style="font-size:24px"></i>
+  <div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0;" id="rightMenu">
+    <button id="settingsClose" class="w3-bar-item w3-button w3-large">Close &times;</button>
+    <a id="background-selector" class="w3-bar-item w3-button right-modal"
+      data-action="background-selector">Background</a>
+    <a id="change-model" class="w3-bar-item w3-button right-modal" data-action="change-model">Change character</a>
+    <a id="change-model-expressions" class="w3-bar-item w3-button right-modal"
+      data-action="change-model-expressions">Expressions</a>
+    <a id="effects" class="w3-bar-item w3-button right-modal" data-action="effects">Effects</a>
   </div>
-  <div class="preview" id="preview">
-    <video class="input_video" width="1280px" height="720px"></video>
-    <canvas class="guides" id="guides"></canvas>
+  <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="leftMenu">
+    <button id="leftBarClose" class="w3-bar-item w3-button w3-large">Close &times;</button>
+    <input type="color" id="background-color-pickcer" name="background-color-pickcer" value="#525252"
+      style="display: none; width: 80%; margin-right: auto; margin-left: auto;">
+  </div>
+  <div id="body">
+    <div class="settings" id="settings-3d" style="background-color: transparent;">
+      <i class="fa fa-gear" style="font-size:40px; color: rgb(26, 204, 127)"></i>
+    </div>
+    <div class="preview" id="preview">
+      <video class="input_video" width="1280px" height="720px"></video>
+      <canvas class="guides" id="guides"></canvas>
+    </div>
+  </div>
+  <div class="progress-container" id="progress-container" data-percentage='0' style="display: none; top: 0; bottom: 0; right: 0; left: 0; margin: auto; position: absolute;"> <!-- style="display: none;"-->
+    <div class="progress" id="progress-bar"></div>
+    <div class="percentage" id="percentage-bar">0%</div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/kalidokit@1.1/dist/kalidokit.umd.js"></script>
   <script src="./index.js" type="module" defer></script>
