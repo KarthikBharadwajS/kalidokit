@@ -1,5 +1,5 @@
 // Import
-import { get2DModel } from "../../utils/model-handler";
+import { get2DModel, getBackground } from "../../utils/model-handler";
 
 export let app = null;
 
@@ -41,7 +41,7 @@ export async function main(modelUrl, modelScale, modelAnchor) {
         view: document.getElementById("live2d"),
         autoStart: true,
         backgroundAlpha: 0,
-        backgroundColor: 0x525252,
+        backgroundColor: getBackground(),
         resizeTo: window,
     });
 

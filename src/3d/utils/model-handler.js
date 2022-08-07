@@ -53,3 +53,27 @@ export const set3dModel = (modelArrValue) => {
         localStorage.setItem("selModValue3d", String(modelArrValue));
     }
 }
+
+// Setter Background 3d
+export function setBackground(val) {
+    if (localStorage) {
+        document.getElementById("background-color-pickcer").value = val;
+        localStorage.setItem("selBackValue3d", val);
+    }
+}
+
+// Getter Background 3d
+export function getBackground() {
+    if (localStorage) {
+        const background = localStorage.getItem("selBackValue3d");
+        if (typeof background === "string") {
+            document.getElementById("background-color-pickcer").value = background;
+            return background;
+        } else {
+            localStorage.setItem("selBackValue3d", "#525252");
+            return "#525252";
+        }
+    } else {
+        return "#525252";
+    }
+}

@@ -1,4 +1,4 @@
-import { get3dModel } from "../utils/model-handler";
+import { get3dModel, getBackground } from "../utils/model-handler";
 import { disableProgressBar, enableProgressBar, setPercentage } from "./settings/progress-bar";
 /* THREEJS WORLD SETUP */
 export let currentVrm;
@@ -26,7 +26,9 @@ export const scene = new THREE.Scene();
 const light = new THREE.DirectionalLight(0xffffff);
 light.position.set(1.0, 1.0, 1.0).normalize();
 scene.add(light);
-renderer.setClearColor(new THREE.Color("#525252"), 1);
+
+const backgroundCColor = getBackground();
+renderer.setClearColor(new THREE.Color(backgroundCColor), 1);
 
 // Main Render Loop
 const clock = new THREE.Clock();

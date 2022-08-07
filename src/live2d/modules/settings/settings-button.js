@@ -1,5 +1,5 @@
 // Import
-import { get2DModel, set2DModel } from "../../utils/model-handler";
+import { get2DModel, set2DModel, setBackground } from "../../utils/model-handler";
 import { rerender, app } from "../facerig/facerig";
 
 let leftBarActions = null;
@@ -22,6 +22,7 @@ document.getElementById("background-color-pickcer").addEventListener("change", c
 
 function colorPickcer(e) {
     const hex = String(e.target.value).replace("#", "");
+    setBackground("0x" + hex);
     app.renderer.backgroundColor = "0x" + hex;
 }
 
