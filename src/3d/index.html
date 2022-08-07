@@ -37,7 +37,7 @@
   <div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none;right:0;" id="rightMenu">
     <button id="settingsClose" class="w3-bar-item w3-button w3-large">Close &times;</button>
     <a id="background-selector" class="w3-bar-item w3-button right-modal"
-      data-action="background-selector">Background</a>
+      data-action="background-selector">3D Scene settings</a>
     <a id="change-model" class="w3-bar-item w3-button right-modal" data-action="change-model">Change character</a>
     <a id="change-model-expressions" class="w3-bar-item w3-button right-modal"
       data-action="change-model-expressions">Expressions</a>
@@ -45,8 +45,17 @@
   </div>
   <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="leftMenu">
     <button id="leftBarClose" class="w3-bar-item w3-button w3-large">Close &times;</button>
+    <label class="scene-params" for="background-color-pickcer">Background color:</label>
     <input type="color" id="background-color-pickcer" name="background-color-pickcer" value="#525252"
+      class="scene-params" style="display: none; width: 80%; margin-right: auto; margin-left: auto;">
+    <label class="scene-params" for="light-color-picker">Directional light color:</label>
+    <input type="color" class="scene-params" id="light-color-picker" name="background-color-pickcer" value="#525252"
       style="display: none; width: 80%; margin-right: auto; margin-left: auto;">
+    <label class="scene-params" for="intensity">Directional light Intensity:</label>
+    <input type="range" id="light-intensity-picker" name="intensity" min="1" max="10" class="scene-params"
+      style="display: none; width: 80%; margin-right: auto; margin-left: auto;">
+    Cast shadow: <input type="checkbox" id="light-cast-shadow" name="light-cast-shadow" class="scene-params inline-box"
+      style="display: none; margin-right: 2px; margin-left: 0; margin-top: 0; margin-bottom: 0; padding: 0;">
   </div>
   <div id="body">
     <div class="settings" id="settings-3d" style="background-color: transparent;">
@@ -57,7 +66,9 @@
       <canvas class="guides" id="guides"></canvas>
     </div>
   </div>
-  <div class="progress-container" id="progress-container" data-percentage='0' style="display: none; top: 0; bottom: 0; right: 0; left: 0; margin: auto; position: absolute;"> <!-- style="display: none;"-->
+  <div class="progress-container" id="progress-container" data-percentage='0'
+    style="display: none; top: 0; bottom: 0; right: 0; left: 0; margin: auto; position: absolute;">
+    <!-- style="display: none;"-->
     <div class="progress" id="progress-bar"></div>
     <div class="percentage" id="percentage-bar">0%</div>
   </div>

@@ -23,7 +23,7 @@ orbitControls.update();
 export const scene = new THREE.Scene();
 
 // light
-const light = new THREE.DirectionalLight(0xffffff);
+export const light = new THREE.DirectionalLight(0xffffff);
 light.position.set(1.0, 1.0, 1.0).normalize();
 scene.add(light);
 
